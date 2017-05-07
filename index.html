@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		
+		<title>Match My Family</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<link rel="stylesheet" type="text/css" href="css/mobile.css" media="screen and (max-device-width: 768px) and (orientation:portrait), screen and (max-device-width: 1024px) and (orientation: landscape)" />
+
+		<script type="text/javascript" src="js/phaser.min.js"></script>
+		<script type="text/javascript" src="js/matchThree.js"></script>
+		<script type="text/javascript">
+			window.addEventListener("load", function(){
+				matchThree.load("js/dom.js");
+				//if(matchThree.isStandalone()) {
+					matchThree.load("js/screen.splash.js", matchThree.setup);
+					matchThree.load("js/screen.menu.js");
+					//if(matchThree.hasWebWorkers()) {
+						//matchThree.preload("js/board.worker.js");
+						//matchThree.load("js/board.worker-interface.js");
+					//} else {
+						matchThree.load("js/board.js");
+						matchThree.load("js/input.js");
+					//}
+					matchThree.load("js/screen.game.js");
+					matchThree.load("js/display.canvas.js");
+				//} else {
+					//matchThree.load("js/screen.install.js", matchThree.setup);
+				//}
+			});
+		</script>
+	</head>
+	<body>
+		<div id="game">
+			<!-- game screens here -->
+			<div class="screen" id="screen-splash">
+				<h1 class="logo">Match<br />My<br />Family</h1>
+				<div class="progress">
+					<div class="indicator"></div>
+				</div>
+				<span class="continue">Click to continue</span>
+			</div>
+
+			<div class="screen" id="screen-menu">
+				<h2 class="logo">Match<br />My<br />Family</h2>
+				<ul class="menu">
+					<li><button name="screen-game">Play</button></li>
+					<li><button name="screen-about">About</button></li>
+					<li><button name="screen-scores">High Scores</button></li>
+					<li><button name="screen-quit">Quit</button></li>
+				</ul>
+			</div>
+			
+			<div class="screen" id="screen-game">
+				<div class="game-board">
+					<!-- canvas will be generated here -->
+					<div class="announcement"></div>
+				</div>
+				<div class="game-info">
+					<label class="level">Level: <span></span></label> 
+					<label class="score">Score: <span></span></label> 
+				</div>
+				<div class="time progress"><div class="indicator"></div></div>
+				<footer>
+					<button class="exit">Exit</button>
+					<button class="pause">Pause</button> 
+				</footer>
+				<div class="pause-overlay">
+					<div class="pause-text">Paused</div>
+				</div>
+			</div>
+
+			<div class="screen" id="screen-scores"></div>
+			<div class="screen" id="screen-about"></div>
+			<div class="screen" id="screen-install">
+				<h1 class="logo">Match <br/>Three</h1>
+				<span>
+					Click the <br /><img src="images/icon-sendto.png" alt="Send To Icon"><br />
+					and then the <br /><img src="images/icon-addto.png" alt="Add to Home Screen Icon" /><br />
+					button to install the game to your home screen.
+				</span> 
+			</div>
+		</div>
+	</body>
+</html>
